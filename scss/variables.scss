@@ -1,0 +1,12 @@
+$color1: #e5f7ff;
+$color2: #006396;
+$color3: #fff;
+$color4: #002233;
+
+@mixin display($display, $direction, $justify, $align, $gap){
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}

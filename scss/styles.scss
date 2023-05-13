@@ -1,0 +1,360 @@
+@import 'variables';
+
+* {
+    font-family: 'Wix Madefor Text', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.bg1 {
+    background-color: $color1;
+}
+
+.bg2 {
+    background-color: $color2;
+}
+
+.bg3 {
+    background-color: $color3;
+}
+
+.bg4 {
+    background-color: $color4;
+}
+
+.container {
+    @include display(flex, column, center, center, 0);
+    background-color: $color3;
+    padding: 1rem;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    max-width: 1000px;
+}
+
+@media screen and (min-width: 480px) {
+    .container {
+        height: 500px;
+    }
+}
+
+/*.button--------------------------------------------------------------------------*/
+.button {
+    background-color: $color2;
+    color: $color1;
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .1s;
+
+    &:hover {
+        transform: scale(110%);
+        border: 2px solid $color1;
+    }
+}
+
+/*header--------------------------------------------------------------------------*/
+header {
+    @include display(flex, column, center, center, 0);
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+
+    .headerTop {
+        @include display(flex, row, space-evenly, center, 1rem);
+        height: 75px;
+        width: 100%;
+        padding: 1rem;
+        background-color: $color1;
+
+        .logo {
+            @include display(flex, row, center, center, 0);
+
+            img {
+                width: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+                font-weight: 700;
+                color: $color2;
+            }
+        }
+
+        input {
+            background-color: $color3;
+            border: 2px solid $color2;
+            border-radius: 10px;
+            color: $color2;
+            height: 2rem;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .icon {
+            @include display(flex, row, center, flex-start, 1rem);
+
+
+            .open {
+                cursor: pointer;
+                display: none;
+            }
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+
+    ul {
+        @include display(flex, row, center, center, 2rem);
+        transition: .5s;
+        margin: 0;
+        background-color: $color1;
+        width: 100%;
+        padding: 1rem;
+
+        svg {
+            display: none;
+        }
+
+        a {
+            text-decoration: none;
+
+            li {
+                list-style: none;
+                color: $color2;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+@media screen and(max-width: 768px) {
+    .open {
+        display: block !important;
+    }
+
+    .nav {
+        display: flex;
+
+        ul {
+            opacity: 0;
+            visibility: hidden;
+
+            @include display(flex, column, flex-start, flex-end, 2rem);
+            background-color: $color2;
+            position: absolute;
+            height: 100vh;
+            width: fit-content;
+            right: 0;
+            top: 0;
+            z-index: 15;
+            transition: .5s;
+            padding: 1.5rem;
+            margin: 0;
+
+
+            svg {
+                cursor: pointer;
+                display: block;
+            }
+
+            a {
+                text-decoration: none;
+
+                li {
+                    list-style: none;
+                    color: $color1;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+.ul.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*hero-----------------------------------------------------------------------*/
+
+.hero {
+    @include display(flex, row, center, center, 0);
+    background-color: $color1;
+    padding: 8rem 1rem 1rem;
+
+    img {
+        display: none;
+    }
+
+    .heroContent {
+        background-color: $color3;
+    }
+
+    .heroText {
+        @include display(flex, column, center, center, 1rem);
+        text-align: center;
+
+        h2 {
+            color: $color4;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+    }
+}
+
+@media screen and(min-width: 480px) {
+    .hero {
+        .heroContent {
+            @include display(flex, row, center, center, 1rem);
+
+            img {
+                display: block;
+                height: 100%;
+            }
+
+            .heroText {
+                @include display(flex, column, center, center, 1rem);
+                width: 75%;
+
+            }
+        }
+    }
+}
+
+/*categorias------------------------------------------------------------------*/
+main {
+    background-color: $color1;
+    padding: 1rem;
+
+    .categoriaSection {
+        @include display (flex, column, center, center, 1rem);
+        padding: 2rem 0;
+
+        h1 {
+            color: $color2;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .categorias {
+            @include display (flex, column, center, center, 1rem);
+            width: 100%;
+
+            .categoria {
+                @include display(flex, row, space-evenly, center, 1rem);
+                border-radius: 10px;
+                width: 100%;
+                background-color: $color3;
+                height: 50%;
+                max-height: 400px;
+                max-width: 600px;
+                box-sizing: border-box;
+                padding: 0 1rem;
+                overflow: hidden;
+
+                .categoriaText {
+                    @include display (flex, column, center, center, 1rem);
+
+                    h3 {
+                        color: $color4;
+                    }
+                }
+
+                .img {
+                    width: 50%;
+                    max-height: 350px;
+                    padding: 1rem;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*latest-----------------------------------------------------------------------*/
+.latestSection {
+    @include display (flex, column, center, center, 1rem);
+    background-color: $color1;
+    padding: 1rem;
+
+    h3 {
+        color: $color2;
+    }
+
+    .containerCards {
+        @include display(flex, column, center, center, 1rem);
+        max-width: 1000px;
+
+        .card {
+            @include display(flex, column, center, flex-start, 1rem);
+            background-color: $color3;
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/*footer----------------------------------------------------------------------*/
+footer {
+    background-color: $color1;
+    @include display (flex, column, center, center, 2rem);
+    padding: 1rem;
+
+    .footerLogo {
+        @include display(flex, column, center, center, 1rem);
+        text-align: center;
+
+        img {
+            width: 80px;
+        }
+
+        p {
+            color: $color2;
+            font-weight: 600;
+        }
+    }
+
+    .soporte {
+        @include display (flex, column, center, center, 1rem);
+
+        h4 {
+            color: $color2;
+        }
+
+        ul {
+            @include display (flex, column, center, center, 1.5rem);
+            text-align: center;
+
+            a {
+                text-decoration: none;
+
+                li {
+                    list-style: none;
+                    color: $color2;
+                    font-weight: 600;
+                    ;
+                }
+            }
+
+        }
+    }
+}
