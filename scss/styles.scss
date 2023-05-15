@@ -427,9 +427,9 @@ footer {
             scroll-behavior: smooth;
             overflow-x: auto;
 
-            &::-webkit-scrollbar{
-                // display: none;
-            }
+            // &::-webkit-scrollbar{
+            //     // display: none;
+            // }
 
             .card{
                 min-width: 200px;
