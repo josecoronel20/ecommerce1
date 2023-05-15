@@ -189,14 +189,18 @@ header {
 .hero {
     @include display(flex, row, center, center, 0);
     background-color: $color1;
-    padding: 8rem 1rem 1rem;
+    padding: 7rem 1rem 1rem;
 
     img {
         display: none;
     }
 
     .heroContent {
-        background-color: $color3;
+        background-image: linear-gradient(to right,rgba(229, 247, 255,.5),rgba(0, 99, 150,.5)) ,url("../img/hero.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
     }
 
     .heroText {
@@ -204,7 +208,7 @@ header {
         text-align: center;
 
         h2 {
-            color: $color4;
+            color: $color1;
             font-weight: 600;
             font-size: 1.5rem;
         }
@@ -231,8 +235,14 @@ header {
     }
 }
 
+@media screen and(min-width: 768px) {
+    .hero{
+        padding: 9.5rem 1rem 1rem;
+    }
+}
+
 /*categorias------------------------------------------------------------------*/
-main {
+.mainIndex {
     background-color: $color1;
     padding: 1rem;
 
@@ -256,8 +266,8 @@ main {
                 width: 100%;
                 background-color: $color3;
                 height: 50%;
-                max-height: 400px;
-                max-width: 600px;
+                max-height: 220px;
+                max-width: 450px;
                 box-sizing: border-box;
                 padding: 0 1rem;
                 overflow: hidden;
@@ -272,8 +282,9 @@ main {
 
                 .img {
                     width: 50%;
-                    max-height: 350px;
+                    height: 100%;
                     padding: 1rem;
+                    object-fit: cover;
 
                     img {
                         width: 100%;
@@ -285,8 +296,8 @@ main {
     }
 }
 
-/*latest-----------------------------------------------------------------------*/
-.latestSection {
+/*lastest-----------------------------------------------------------------------*/
+.lastestSection {
     @include display (flex, column, center, center, 1rem);
     background-color: $color1;
     padding: 1rem;
@@ -297,19 +308,33 @@ main {
 
     .containerCards {
         @include display(flex, column, center, center, 1rem);
-        max-width: 1000px;
 
         .card {
-            @include display(flex, column, center, flex-start, 1rem);
+            @include display(flex, column, space-between, flex-start, 1rem);
             background-color: $color3;
             padding: 1rem;
             border-radius: 10px;
             width: 100%;
+            max-width: 250px;
 
             img {
                 width: 100%;
             }
         }
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .containerCards{
+        display: grid!important;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (min-width:768px){
+    .containerCards{
+        display: grid!important;
+        grid-template-columns: repeat(3,1fr);
     }
 }
 
@@ -319,13 +344,14 @@ footer {
     @include display (flex, column, center, center, 2rem);
     padding: 1rem;
 
-    .footerLogo {
+    img {
+        width: 80px;
+    }
+
+    .footerText {
         @include display(flex, column, center, center, 1rem);
         text-align: center;
 
-        img {
-            width: 80px;
-        }
 
         p {
             color: $color2;
@@ -356,5 +382,12 @@ footer {
             }
 
         }
+    }
+}
+
+@media screen and (min-width:768px) {
+    .footerContent{
+        @include display (grid,column,center,center,1rem);
+        grid-template-columns: repeat(2,1fr);
     }
 }
