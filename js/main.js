@@ -118,6 +118,25 @@ let productos = [
     {id: 6, nombre: "rodilleras", precio: 900},
 ];
 
+
+
+let nombre = prompt("escribe el nombre de algun producto para verificar si hay stock");
+const encontrado = productos.filter(item => item.nombre.includes(nombre));
+
+encontrado.forEach(item => {
+    let mensaje = `
+    id: ${item.id}
+    nombre del producto ${item.nombre}
+    precio: $${item.precio}
+    `;
+
+    alert(mensaje);
+})
+
+
+
+
+
 productos.forEach(item => {
     let card = document.createElement("div");
     card.classList.add("card");
