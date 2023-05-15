@@ -240,11 +240,11 @@ header {
         border-radius: 10px;
         width: 100%;
         background-color: #fff;
-        height: 50%;
+        height: 100%;
         max-height: 220px;
         max-width: 450px;
         box-sizing: border-box;
-        padding: 0 1rem;
+        padding: 1rem;
         overflow: hidden; }
         .mainIndex .categoriaSection .categorias .categoria .categoriaText {
           display: flex;
@@ -255,13 +255,18 @@ header {
           .mainIndex .categoriaSection .categorias .categoria .categoriaText h3 {
             color: #002233; }
         .mainIndex .categoriaSection .categorias .categoria .img {
-          width: 50%;
+          width: 100%;
           height: 100%;
           padding: 1rem;
           object-fit: cover; }
           .mainIndex .categoriaSection .categorias .categoria .img img {
             width: 100%;
-            height: 100%; }
+            height: 100%;
+            bottom: 0; }
+
+@media screen and (min-width: 768px) {
+  .categorias {
+    flex-direction: row !important; } }
 
 /*lastest-----------------------------------------------------------------------*/
 .lastestSection {
@@ -280,19 +285,20 @@ header {
     justify-content: center;
     align-items: center;
     gap: 1rem; }
-    .lastestSection .containerCards .card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      background-color: #fff;
-      padding: 1rem;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 250px; }
-      .lastestSection .containerCards .card img {
-        width: 100%; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 250px; }
+  .card img {
+    width: 100%; }
 
 @media screen and (min-width: 480px) {
   .containerCards {
@@ -355,3 +361,29 @@ footer {
     align-items: center;
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr); } }
+
+/*categorias--------------------------------------------------------------------*/
+.mainCategorias {
+  min-height: 100vh;
+  background-color: #e5f7ff;
+  padding: 9.5rem 1rem 1rem; }
+  .mainCategorias svg {
+    opacity: 50%;
+    cursor: pointer; }
+    .mainCategorias svg:hover {
+      opacity: 100%; }
+  .mainCategorias .categoriaProductos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0; }
+    .mainCategorias .categoriaProductos .carousel {
+      width: 100%;
+      display: flex;
+      gap: 1rem;
+      scroll-behavior: smooth;
+      overflow-x: auto; }
+      .mainCategorias .categoriaProductos .carousel .card {
+        min-width: 200px; }
