@@ -135,7 +135,6 @@ productos.forEach(item => {
     `;
 
     containerCard.append(card);
-    carousel.append(card);
 });
 
 
