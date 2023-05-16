@@ -52,8 +52,7 @@
     transition: .1s;
 
     &:hover {
-        transform: scale(110%);
-        border: 2px solid $color1;
+        background-color: $color4;
     }
 }
 
@@ -73,6 +72,7 @@ header {
 
         .logo {
             @include display(flex, row, center, center, 0);
+            text-decoration: none;
 
             img {
                 width: 1.5rem;
@@ -90,6 +90,7 @@ header {
             border: 2px solid $color2;
             border-radius: 10px;
             color: $color2;
+            font-weight: 500;
             height: 2rem;
             width: 100%;
             max-width: 300px;
@@ -98,6 +99,14 @@ header {
 
         .icon {
             @include display(flex, row, center, flex-start, 1rem);
+
+            svg{
+                transition: 0.1s;
+
+                    &:hover{
+                        transform: scale(110%);
+                    }
+            }
 
 
             .open {
@@ -131,6 +140,12 @@ header {
                 list-style: none;
                 color: $color2;
                 font-weight: 500;
+                transition: 0.1s;
+
+                    &:hover{
+                        color: $color4;
+                        transform: scale(110%);
+                    }
             }
         }
     }
@@ -173,6 +188,12 @@ header {
                     list-style: none;
                     color: $color1;
                     font-weight: 500;
+                    transition: 0.1s;
+
+                    &:hover{
+                        color: $color4;
+                        transform: scale(110%);
+                    }
                 }
             }
         }
@@ -197,14 +218,14 @@ header {
     }
 
     .heroContent {
-        @include display (flex,column,center,center,1rem);
-        background-image: linear-gradient(to right,rgba(229, 247, 255,.5),rgba(0, 99, 150,.5)) ,url("../img/hero.webp");
+        @include display (flex, column, center, center, 1rem);
+        background-image: linear-gradient(to right, rgba(229, 247, 255, .5), rgba(0, 99, 150, .5)), url("../img/hero.webp");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position:bottom;
         background-size: cover;
         background-attachment: fixed;
         width: 100%;
-        min-height: 70vh;
+        min-height: 80vh;
     }
 
     .heroText {
@@ -223,7 +244,6 @@ header {
 @media screen and(min-width: 480px) {
     .hero {
         .heroContent {
-            @include display(flex, row, center, center, 1rem);
             width: 100%;
 
             img {
@@ -241,18 +261,18 @@ header {
 }
 
 @media screen and(min-width: 768px) {
-    .hero{
+    .hero {
         padding: 9.5rem 0rem 1rem;
         width: 100%;
     }
 }
 
-/*categorias------------------------------------------------------------------*/
+/*chooseSection------------------------------------------------------------------*/
 .mainIndex {
     background-color: $color1;
     padding: 1rem;
 
-    .categoriaSection {
+    .chooseSection {
         @include display (flex, column, center, center, 1rem);
         padding: 2rem 0;
 
@@ -266,7 +286,7 @@ header {
             @include display (flex, column, center, center, 1rem);
             width: 100%;
 
-            .categoria {
+            .categoriaCard {
                 @include display(flex, row, space-evenly, center, 1rem);
                 border-radius: 10px;
                 width: 100%;
@@ -278,11 +298,11 @@ header {
                 padding: 1rem;
                 overflow: hidden;
 
-                .categoriaText {
+                .categoriaCardText {
                     @include display (flex, column, center, center, 1rem);
 
                     h3 {
-                        color: $color4;
+                        color: $color2;
                     }
                 }
 
@@ -295,7 +315,7 @@ header {
                     img {
                         width: 100%;
                         height: 100%;
-                        bottom:0
+                        bottom: 0
                     }
                 }
             }
@@ -304,23 +324,48 @@ header {
 }
 
 @media screen and(min-width:768px) {
-    .categorias{
-        flex-direction: row!important;
+    .categorias {
+        flex-direction: row !important;
     }
 }
 
-/*lastest-----------------------------------------------------------------------*/
-.lastestSection {
-    @include display (flex, column, center, center, 1rem);
-    background-color: $color1;
-    padding: 1rem;
+/*carousel-----------------------------------------------------------------------*/
 
-    h3 {
+.carouselSection {
+    @include display (flex, column, center, center, 1rem);
+
+    h2 {
         color: $color2;
     }
 
-    .containerCards {
-        @include display(flex, column, center, center, 1rem);
+    padding: 2rem 0;
+
+    .carouselContain {
+        @include display (flex, row, center, center, 1rem);
+        margin: 1rem 0;
+        width: 100%;
+        max-width: 1400px;
+
+        svg {
+            opacity: 50%;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 100%;
+            }
+        }
+
+        .carousel {
+            width: 100%;
+            display: flex;
+            gap: 1rem;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
     }
 }
 
@@ -329,27 +374,28 @@ header {
     background-color: $color3;
     padding: 1rem;
     border-radius: 10px;
-    width: 100%;
-    max-width: 250px;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 400px;
+    max-height: 400px;
+
+    .cardText {
+        @include display (flex, column, center, flex-start, 1rem);
+        width: 100%;
+
+        h4,
+        p {
+            color: $color2;
+        }
+    }
 
     img {
         width: 100%;
+        max-height: 200px;
     }
 }
 
-@media screen and (min-width: 480px) {
-    .containerCards{
-        display: grid!important;
-        grid-template-columns: repeat(2,1fr);
-    }
-}
 
-@media screen and (min-width:768px){
-    .containerCards{
-        display: grid!important;
-        grid-template-columns: repeat(3,1fr);
-    }
-}
 
 /*footer----------------------------------------------------------------------*/
 footer {
@@ -399,47 +445,22 @@ footer {
 }
 
 @media screen and (min-width:768px) {
-    .footerContent{
-        @include display (grid,column,center,center,1rem);
-        grid-template-columns: repeat(2,1fr);
+    .footerContent {
+        @include display (grid, column, center, center, 1rem);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/*categorias--------------------------------------------------------------------*/
+/*soporte-------------------------------------------------------*/
 
-
-.mainCategorias{
-    min-height: 100vh;
+.mainPolitica, .mainSoporte{
     background-color: $color1;
-    padding:9.5rem 1rem 1rem;
+    color: $color2;
+    min-height: 100vh;
+    padding: 9.5rem 3rem 1rem;
+}
 
-    svg{
-        opacity: 50%;
-        cursor: pointer;
+.mainPolitica{
+    @include display(flex,column,center,flex-start,1rem);
 
-        &:hover{
-            opacity: 100%;
-        }
-    }
-
-    .categoriaProductos{
-        @include display (flex,row,center,center,1rem);
-        margin: 1rem 0;
-
-        .carousel{
-            width: 100%;
-            display: flex;
-            gap:1rem;
-            scroll-behavior: smooth;
-            overflow-x: auto;
-
-            // &::-webkit-scrollbar{
-            //     // display: none;
-            // }
-
-            .card{
-                min-width: 200px;
-            }
-        }
-    }
 }

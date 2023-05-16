@@ -14,7 +14,7 @@
   background-color: #fff; }
 
 .bg4 {
-  background-color: #002233; }
+  background-color: #23a6e7; }
 
 .container {
   display: flex;
@@ -45,8 +45,7 @@
   cursor: pointer;
   transition: .1s; }
   .button:hover {
-    transform: scale(110%);
-    border: 2px solid #e5f7ff; }
+    background-color: #23a6e7; }
 
 /*header--------------------------------------------------------------------------*/
 header {
@@ -73,7 +72,8 @@ header {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      gap: 0; }
+      gap: 0;
+      text-decoration: none; }
       header .headerTop .logo img {
         width: 1.5rem; }
       header .headerTop .logo p {
@@ -85,6 +85,7 @@ header {
       border: 2px solid #006396;
       border-radius: 10px;
       color: #006396;
+      font-weight: 500;
       height: 2rem;
       width: 100%;
       max-width: 300px;
@@ -95,6 +96,10 @@ header {
       justify-content: center;
       align-items: flex-start;
       gap: 1rem; }
+      header .headerTop .icon svg {
+        transition: 0.1s; }
+        header .headerTop .icon svg:hover {
+          transform: scale(110%); }
       header .headerTop .icon .open {
         cursor: pointer;
         display: none; }
@@ -120,7 +125,11 @@ header {
       .nav ul a li {
         list-style: none;
         color: #006396;
-        font-weight: 500; }
+        font-weight: 500;
+        transition: 0.1s; }
+        .nav ul a li:hover {
+          color: #23a6e7;
+          transform: scale(110%); }
 
 @media screen and (max-width: 768px) {
   .open {
@@ -153,7 +162,11 @@ header {
         .nav ul a li {
           list-style: none;
           color: #e5f7ff;
-          font-weight: 500; } }
+          font-weight: 500;
+          transition: 0.1s; }
+          .nav ul a li:hover {
+            color: #23a6e7;
+            transform: scale(110%); } }
 
 .ul.visible {
   opacity: 1;
@@ -179,11 +192,11 @@ header {
     gap: 1rem;
     background-image: linear-gradient(to right, rgba(229, 247, 255, 0.5), rgba(0, 99, 150, 0.5)), url("../img/hero.webp");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
-    min-height: 70vh; }
+    min-height: 80vh; }
   .hero .heroText {
     display: flex;
     flex-direction: column;
@@ -198,11 +211,6 @@ header {
 
 @media screen and (min-width: 480px) {
   .hero .heroContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
     width: 100%; }
     .hero .heroContent img {
       display: block;
@@ -220,29 +228,29 @@ header {
     padding: 9.5rem 0rem 1rem;
     width: 100%; } }
 
-/*categorias------------------------------------------------------------------*/
+/*chooseSection------------------------------------------------------------------*/
 .mainIndex {
   background-color: #e5f7ff;
   padding: 1rem; }
-  .mainIndex .categoriaSection {
+  .mainIndex .chooseSection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     padding: 2rem 0; }
-    .mainIndex .categoriaSection h1 {
+    .mainIndex .chooseSection h1 {
       color: #006396;
       font-size: 2rem;
       font-weight: 500; }
-    .mainIndex .categoriaSection .categorias {
+    .mainIndex .chooseSection .categorias {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 1rem;
       width: 100%; }
-      .mainIndex .categoriaSection .categorias .categoria {
+      .mainIndex .chooseSection .categorias .categoriaCard {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -257,20 +265,20 @@ header {
         box-sizing: border-box;
         padding: 1rem;
         overflow: hidden; }
-        .mainIndex .categoriaSection .categorias .categoria .categoriaText {
+        .mainIndex .chooseSection .categorias .categoriaCard .categoriaCardText {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           gap: 1rem; }
-          .mainIndex .categoriaSection .categorias .categoria .categoriaText h3 {
-            color: #002233; }
-        .mainIndex .categoriaSection .categorias .categoria .img {
+          .mainIndex .chooseSection .categorias .categoriaCard .categoriaCardText h3 {
+            color: #006396; }
+        .mainIndex .chooseSection .categorias .categoriaCard .img {
           width: 100%;
           height: 100%;
           padding: 1rem;
           object-fit: cover; }
-          .mainIndex .categoriaSection .categorias .categoria .img img {
+          .mainIndex .chooseSection .categorias .categoriaCard .img img {
             width: 100%;
             height: 100%;
             bottom: 0; }
@@ -279,23 +287,38 @@ header {
   .categorias {
     flex-direction: row !important; } }
 
-/*lastest-----------------------------------------------------------------------*/
-.lastestSection {
+/*carousel-----------------------------------------------------------------------*/
+.carouselSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background-color: #e5f7ff;
-  padding: 1rem; }
-  .lastestSection h3 {
+  padding: 2rem 0; }
+  .carouselSection h2 {
     color: #006396; }
-  .lastestSection .containerCards {
+  .carouselSection .carouselContain {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem; }
+    gap: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 1400px; }
+    .carouselSection .carouselContain svg {
+      opacity: 50%;
+      cursor: pointer; }
+      .carouselSection .carouselContain svg:hover {
+        opacity: 100%; }
+    .carouselSection .carouselContain .carousel {
+      width: 100%;
+      display: flex;
+      gap: 1rem;
+      scroll-behavior: smooth;
+      overflow-x: auto; }
+      .carouselSection .carouselContain .carousel::-webkit-scrollbar {
+        display: none; }
 
 .card {
   display: flex;
@@ -306,20 +329,23 @@ header {
   background-color: #fff;
   padding: 1rem;
   border-radius: 10px;
-  width: 100%;
-  max-width: 250px; }
-  .card img {
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 400px;
+  max-height: 400px; }
+  .card .cardText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
     width: 100%; }
-
-@media screen and (min-width: 480px) {
-  .containerCards {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr); } }
-
-@media screen and (min-width: 768px) {
-  .containerCards {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr); } }
+    .card .cardText h4,
+    .card .cardText p {
+      color: #006396; }
+  .card img {
+    width: 100%;
+    max-height: 200px; }
 
 /*footer----------------------------------------------------------------------*/
 footer {
@@ -373,28 +399,16 @@ footer {
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr); } }
 
-/*categorias--------------------------------------------------------------------*/
-.mainCategorias {
-  min-height: 100vh;
+/*soporte-------------------------------------------------------*/
+.mainPolitica, .mainSoporte {
   background-color: #e5f7ff;
-  padding: 9.5rem 1rem 1rem; }
-  .mainCategorias svg {
-    opacity: 50%;
-    cursor: pointer; }
-    .mainCategorias svg:hover {
-      opacity: 100%; }
-  .mainCategorias .categoriaProductos {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 1rem 0; }
-    .mainCategorias .categoriaProductos .carousel {
-      width: 100%;
-      display: flex;
-      gap: 1rem;
-      scroll-behavior: smooth;
-      overflow-x: auto; }
-      .mainCategorias .categoriaProductos .carousel .card {
-        min-width: 200px; }
+  color: #006396;
+  min-height: 100vh;
+  padding: 9.5rem 3rem 1rem; }
+
+.mainPolitica {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem; }
