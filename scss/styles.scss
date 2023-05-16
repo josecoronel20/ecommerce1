@@ -189,18 +189,22 @@ header {
 .hero {
     @include display(flex, row, center, center, 0);
     background-color: $color1;
-    padding: 7rem 1rem 1rem;
+    padding: 7rem 0 1rem;
+    width: 100%;
 
     img {
         display: none;
     }
 
     .heroContent {
+        @include display (flex,column,center,center,1rem);
         background-image: linear-gradient(to right,rgba(229, 247, 255,.5),rgba(0, 99, 150,.5)) ,url("../img/hero.webp");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-
+        background-attachment: fixed;
+        width: 100%;
+        min-height: 70vh;
     }
 
     .heroText {
@@ -220,6 +224,7 @@ header {
     .hero {
         .heroContent {
             @include display(flex, row, center, center, 1rem);
+            width: 100%;
 
             img {
                 display: block;
@@ -237,7 +242,8 @@ header {
 
 @media screen and(min-width: 768px) {
     .hero{
-        padding: 9.5rem 1rem 1rem;
+        padding: 9.5rem 0rem 1rem;
+        width: 100%;
     }
 }
 
