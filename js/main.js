@@ -162,7 +162,7 @@ productos.forEach(item => {
 
 
 
-//slider cateogrias----------------------------------------------------------
+//carousel----------------------------------------------------------
 
 
 const preArrow = document.querySelector('.preArrow');
@@ -179,4 +179,4 @@ scrollToLeft = () => {
 nextArrow.addEventListener('click', scrollToRight)
 preArrow.addEventListener('click', scrollToLeft)
 
-    //todavia no funciona el slider, tengo que trabajar en la seccion del carrito, la de favoritos, la del producto individual, las pages que faltan crear, pero agregué lo escencial que son las Cards.
+    // tengo que trabajar en la seccion del carrito, la de favoritos, la del producto individual, las pages que faltan crear, pero agregué lo escencial que son las Cards.
