@@ -117,7 +117,8 @@ header {
     margin: 0;
     background-color: #e5f7ff;
     width: 100%;
-    padding: 1rem; }
+    padding: 1rem;
+    text-align: center; }
     .nav ul svg {
       display: none; }
     .nav ul a {
@@ -400,7 +401,8 @@ footer {
     grid-template-columns: repeat(2, 1fr); } }
 
 /*soporte-------------------------------------------------------*/
-.mainPolitica, .mainSoporte {
+.mainPolitica,
+.mainSoporte {
   background-color: #e5f7ff;
   color: #006396;
   min-height: 100vh;
@@ -412,3 +414,55 @@ footer {
   justify-content: center;
   align-items: flex-start;
   gap: 1rem; }
+
+/*allproduct---------------------------------*/
+.mainProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0; }
+  .mainProduct .checks {
+    padding: 9.5rem 1rem 1rem;
+    background-color: #e5f7ff;
+    width: 100%; }
+    .mainProduct .checks ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem; }
+      .mainProduct .checks ul li {
+        list-style: none;
+        text-align: center;
+        width: 100%; }
+        .mainProduct .checks ul li .buttonCategoria {
+          text-align: center;
+          color: #fff;
+          font-size: 1.2rem;
+          font-weight: 500;
+          padding: 20px;
+          width: 100%;
+          background-color: #006396;
+          border-radius: 10px;
+          cursor: pointer;
+          border: none; }
+        .mainProduct .checks ul li .checked {
+          background-color: #23a6e7; }
+
+@media screen and (max-width: 768px) {
+  .checks ul {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr); } }
+
+.productContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1rem 1rem;
+  min-height: 100vh;
+  background-color: #e5f7ff;
+  flex-wrap: wrap; }

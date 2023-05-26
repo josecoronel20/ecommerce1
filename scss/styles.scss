@@ -100,12 +100,12 @@ header {
         .icon {
             @include display(flex, row, center, flex-start, 1rem);
 
-            svg{
+            svg {
                 transition: 0.1s;
 
-                    &:hover{
-                        transform: scale(110%);
-                    }
+                &:hover {
+                    transform: scale(110%);
+                }
             }
 
 
@@ -128,6 +128,7 @@ header {
         background-color: $color1;
         width: 100%;
         padding: 1rem;
+        text-align: center;
 
         svg {
             display: none;
@@ -142,10 +143,10 @@ header {
                 font-weight: 500;
                 transition: 0.1s;
 
-                    &:hover{
-                        color: $color4;
-                        transform: scale(110%);
-                    }
+                &:hover {
+                    color: $color4;
+                    transform: scale(110%);
+                }
             }
         }
     }
@@ -190,7 +191,7 @@ header {
                     font-weight: 500;
                     transition: 0.1s;
 
-                    &:hover{
+                    &:hover {
                         color: $color4;
                         transform: scale(110%);
                     }
@@ -221,7 +222,7 @@ header {
         @include display (flex, column, center, center, 1rem);
         background-image: linear-gradient(to right, rgba(229, 247, 255, .5), rgba(0, 99, 150, .5)), url("../img/hero.webp");
         background-repeat: no-repeat;
-        background-position:bottom;
+        background-position: bottom;
         background-size: cover;
         background-attachment: fixed;
         width: 100%;
@@ -453,14 +454,73 @@ footer {
 
 /*soporte-------------------------------------------------------*/
 
-.mainPolitica, .mainSoporte{
+.mainPolitica,
+.mainSoporte {
     background-color: $color1;
     color: $color2;
     min-height: 100vh;
     padding: 9.5rem 3rem 1rem;
 }
 
-.mainPolitica{
-    @include display(flex,column,center,flex-start,1rem);
+.mainPolitica {
+    @include display(flex, column, center, flex-start, 1rem);
 
+}
+
+/*allproduct---------------------------------*/
+
+.mainProduct {
+    @include display (flex, column, center, center, 0);
+
+    .checks {
+        padding: 9.5rem 1rem 1rem;
+        background-color: $color1;
+        width: 100%;
+
+        ul {
+            @include display(flex, row, center, center, 1rem);
+
+            li {
+                list-style: none;
+                text-align: center;
+                width: 100%;
+
+                .buttonCategoria {
+                    text-align: center;
+                    color: $color3;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    padding: 20px;
+                    width: 100%;
+                    background-color: $color2;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    border: none;
+
+                }
+                .checked {
+                    background-color: $color4;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: 768px) {
+    .checks{
+        ul{
+            display: grid!important;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: repeat(2,1fr);
+        }
+    }
+}
+
+
+.productContainer {
+    @include display(flex, row, center, center, 1rem);
+    padding: 1rem 1rem 1rem;
+    min-height: 100vh;
+    background-color: $color1;
+    flex-wrap: wrap;
 }
