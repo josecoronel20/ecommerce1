@@ -1,9 +1,8 @@
-let productContainer = document.querySelector(".productContainer");
-let buttonCategoria = document.querySelectorAll(".buttonCategoria");
+let productContainer = document.querySelector('.productContainer');
 
-function cargarProductos(productosElegidos){
+function cargarProductos(productosElegidos) {
+    
     productContainer.innerHTML = " ";
-
     productosElegidos.forEach(item => {
 
         let card = document.createElement("div");
@@ -19,28 +18,40 @@ function cargarProductos(productosElegidos){
                         <div class="cardText">
                             <h4>${item.nombre}</h4>
                             <p>$${item.precio}</p>
-                            <button class="buttonCarrito button">Agregar al carrito</button>
+                            <button class="buttonCarrito button" id="${item.id}">Agregar al carrito</button>
                         </div>
                         </div>
         `;
         productContainer.append(card);
+
+        actualizarButtonCarrito();
     });
 }
 
 cargarProductos(productos);
 
 
+function actualizarButtonCarrito() {
+    buttonCarrito = document.querySelectorAll(".buttonCarrito");
 
+    buttonCarrito.forEach(boton => {
+        boton.addEventListener("click", addToCart);
+    })
+}
+
+
+
+//filter
 buttonCategoria.forEach(buton => {
-    buton.addEventListener("click", () =>{
-        buttonCategoria.forEach(boton =>{
+    buton.addEventListener("click", () => {
+        buttonCategoria.forEach(boton => {
             boton.classList.remove("checked");
         })
         buton.classList.add("checked");
 
-        if(buton.id != "todos"){
+        if (buton.id != "todos") {
             const productosBoton = productos.filter(producto => producto.categoria === buton.id)
-        cargarProductos(productosBoton);
+            cargarProductos(productosBoton);
         } else {
             cargarProductos(productos);
         }
