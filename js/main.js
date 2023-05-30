@@ -135,7 +135,7 @@ function cargarProductos(productosElegidos) {
         let card = document.createElement("div");
         card.classList.add("card");
         card.innerHTML = `
-                        <img src="/img/${item.id}.png" alt="">
+                        <img src="img/${item.id}.png" alt="">
                         
                         <div class="cardInfo">
                         <svg class="fav" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
@@ -222,5 +222,5 @@ scrollToLeft = () => {
 nextArrow.addEventListener('click', scrollToRight)
 preArrow.addEventListener('click', scrollToLeft)
 
-// tengo que trabajar en la seccion del carrito, la de favoritos, la del producto individual, las pages que faltan crear, pero agregué lo escencial que son las Cards.
+// el local storage esta trabajado en el carrito, tengo que corregir el tema de las imagenes, que aparecene en una pagina y en otras no, tengo que corregir un par de errores y añadir la seccion de favoritos.
 

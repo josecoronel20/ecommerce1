@@ -78,6 +78,3 @@ function actualizarNumeritoCart() {
 
     numeritoCart.innerText = nuevoNumeritoCart;
 }
-
-
-
