@@ -16,6 +16,9 @@
 .bg4 {
   background-color: #23a6e7; }
 
+body {
+  background-color: #e5f7ff; }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -230,65 +233,6 @@ header {
     padding: 9.5rem 0rem 1rem;
     width: 100%; } }
 
-/*chooseSection------------------------------------------------------------------*/
-.mainIndex {
-  background-color: #e5f7ff;
-  padding: 1rem; }
-  .mainIndex .chooseSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 2rem 0; }
-    .mainIndex .chooseSection h1 {
-      color: #006396;
-      font-size: 2rem;
-      font-weight: 500; }
-    .mainIndex .chooseSection .categorias {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      width: 100%; }
-      .mainIndex .chooseSection .categorias .categoriaCard {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 1rem;
-        border-radius: 10px;
-        width: 100%;
-        background-color: #fff;
-        height: 100%;
-        max-height: 220px;
-        max-width: 450px;
-        box-sizing: border-box;
-        padding: 1rem;
-        overflow: hidden; }
-        .mainIndex .chooseSection .categorias .categoriaCard .categoriaCardText {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 1rem; }
-          .mainIndex .chooseSection .categorias .categoriaCard .categoriaCardText h3 {
-            color: #006396; }
-        .mainIndex .chooseSection .categorias .categoriaCard .img {
-          width: 100%;
-          height: 100%;
-          padding: 1rem;
-          object-fit: cover; }
-          .mainIndex .chooseSection .categorias .categoriaCard .img img {
-            width: 100%;
-            height: 100%;
-            bottom: 0; }
-
-@media screen and (min-width: 768px) {
-  .categorias {
-    flex-direction: row !important; } }
-
 /*carousel-----------------------------------------------------------------------*/
 .carouselSection {
   display: flex;
@@ -308,11 +252,11 @@ header {
     margin: 1rem 0;
     width: 100%;
     max-width: 1400px; }
-    .carouselSection .carouselContain svg {
-      opacity: 50%;
-      cursor: pointer; }
-      .carouselSection .carouselContain svg:hover {
-        opacity: 100%; }
+    .carouselSection .carouselContain .arrowCarousel {
+      opacity: 70%; }
+      .carouselSection .carouselContain .arrowCarousel:hover {
+        opacity: 100%;
+        cursor: pointer; }
     .carouselSection .carouselContain .carousel {
       width: 100%;
       display: flex;
@@ -331,10 +275,16 @@ header {
   background-color: #fff;
   padding: 1rem;
   border-radius: 10px;
-  min-width: 190px;
+  width: 100%;
+  min-width: 150px;
   max-width: 190px;
   min-height: 380px;
   max-height: 380px; }
+  .card svg {
+    opacity: 50%;
+    cursor: pointer; }
+    .card svg:hover {
+      opacity: 100%; }
   .card .cardText {
     display: flex;
     flex-direction: column;
@@ -423,7 +373,8 @@ footer {
       gap: 1rem; }
       .mainProduct .checks ul li {
         list-style: none;
-        text-align: center; }
+        text-align: center;
+        width: 100%; }
         .mainProduct .checks ul li .buttonCategoria {
           text-align: center;
           color: #fff;
@@ -433,7 +384,8 @@ footer {
           background-color: #006396;
           border-radius: 10px;
           cursor: pointer;
-          border: none; }
+          border: none;
+          width: 100%; }
         .mainProduct .checks ul li .checked {
           background-color: #23a6e7; }
 
@@ -441,7 +393,8 @@ footer {
   .checks {
     padding-top: 5rem !important; }
     .checks ul {
-      flex-direction: column !important; } }
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr); } }
 
 .productContainer {
   display: flex;
@@ -449,103 +402,56 @@ footer {
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1rem 1rem 1rem;
+  padding: 1rem 0.5rem 1rem;
   background-color: #e5f7ff;
   flex-wrap: wrap;
-  width: 100%; }
-
-.buttonFav {
-  background-color: #006396;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #fff;
-  transition: .1s; }
-  .buttonFav:hover {
-    background-color: #23a6e7; }
-
-.favClose {
-  display: none;
-  align-items: center; }
-
-.favOpen {
-  display: flex;
-  align-items: center; }
-
-.numeroCantidadFav {
-  background-color: #fff;
-  padding: 0 5px;
-  border-radius: 50%;
-  color: #006396;
-  font-weight: 500; }
-
-.favContainer {
-  position: absolute;
-  background-color: #e5f7ff;
   width: 100%;
-  max-width: 500px;
-  right: 0;
-  display: none;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-  scroll-behavior: smooth;
-  max-height: 90vh;
-  overflow-y: auto; }
-  .favContainer .cardFav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0;
-    background-color: #fff;
-    width: 100%;
-    padding: 0.5rem 1.5rem;
-    border-radius: 10px; }
-    .favContainer .cardFav .deleteFav {
-      cursor: pointer; }
-    .favContainer .cardFav img {
-      max-width: 70px;
-      max-width: 80px; }
-    .favContainer .cardFav .cardInfo {
-      width: 100%;
-      text-align: center; }
-      .favContainer .cardFav .cardInfo .cardText {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 0.5rem; }
-
-.cartClose {
-  display: none;
-  align-items: center; }
+  max-width: 1250px; }
 
 .cartOpen {
   display: flex;
   align-items: center; }
+  .cartOpen p {
+    background-color: #fff;
+    padding: 0 5px;
+    border-radius: 50%;
+    color: #006396;
+    font-weight: 500; }
 
-.numeroCantidadCart {
-  background-color: #fff;
-  padding: 0 5px;
-  border-radius: 50%;
+.carritoVacio {
+  text-align: center;
   color: #006396;
-  font-weight: 500; }
+  font-size: 1.5rem; }
+
+.vaciar {
+  display: none; }
 
 .cartContainer {
   position: absolute;
   background-color: #e5f7ff;
+  border-radius: 10px;
   width: 90%;
   max-height: 90vh;
   left: 5%;
   display: none;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 1rem;
   padding: 2rem;
   scroll-behavior: smooth;
   overflow-y: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  .cartContainer .buttonBuy {
+    background-color: #006396;
+    color: #e5f7ff;
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .1s; }
+    .cartContainer .buttonBuy:hover {
+      background-color: #23a6e7; }
   .cartContainer .cardCart {
     display: flex;
     flex-direction: row;
