@@ -16,7 +16,7 @@ let productos;
 let total;
 let ubicacionActual = window.location.pathname;
 
-fetch('../productos.json')
+fetch('/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
