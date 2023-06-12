@@ -475,13 +475,15 @@ footer {
 .cartOpen {
     display: flex;
     align-items: center;
+    background-color: $color3;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 
     p {
-        background-color: $color3;
-        padding: 0 5px;
-        border-radius: 50%;
         color: $color2;
         font-weight: 500;
+        font-size: 1.2rem;
     }
 }
 
@@ -522,8 +524,28 @@ footer {
         transition: .1s;
     
         &:hover {
-            background-color: $color4;
+            background-color:#2dca18;
         }
+    }
+
+    .vaciarCarritoButton:hover{
+        background-color: #ca1818;
+    }
+
+    .vaciarCarritoMasTotal{
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .total{
+        background-color: $color3;
+        color: $color2;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 1.5rem;
     }
 
     .cardCart {

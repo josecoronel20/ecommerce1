@@ -410,13 +410,15 @@ footer {
 
 .cartOpen {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer; }
   .cartOpen p {
-    background-color: #fff;
-    padding: 0 5px;
-    border-radius: 50%;
     color: #006396;
-    font-weight: 500; }
+    font-weight: 500;
+    font-size: 1.2rem; }
 
 .carritoVacio {
   text-align: center;
@@ -451,7 +453,21 @@ footer {
     cursor: pointer;
     transition: .1s; }
     .cartContainer .buttonBuy:hover {
-      background-color: #23a6e7; }
+      background-color: #2dca18; }
+  .cartContainer .vaciarCarritoButton:hover {
+    background-color: #ca1818; }
+  .cartContainer .vaciarCarritoMasTotal {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center; }
+  .cartContainer .total {
+    background-color: #fff;
+    color: #006396;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1.5rem; }
   .cartContainer .cardCart {
     display: flex;
     flex-direction: row;

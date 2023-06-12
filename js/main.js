@@ -88,7 +88,6 @@
 
 // alert(`¡Alerta importante! Esta página web no es oficial y ha sido creada únicamente con fines educativos.`)
 //productos
-let carousel = document.querySelector(".carousel");
 // let nombre = prompt("escribe el nombre de algun producto para verificar si hay stock");
 // const encontrado = productos.filter(item => item.nombre.includes(nombre));
 
@@ -109,7 +108,7 @@ let carousel = document.querySelector(".carousel");
 //     card.classList.add("card");
 //     card.innerHTML = `
 //                         <img src="img/${item.id}.png" alt="">
-                        
+
 //                         <div class="cardInfo">
 //                         <svg class="fav" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
 //                                 <path fill="#006396"
@@ -125,10 +124,22 @@ let carousel = document.querySelector(".carousel");
 
 //         carousel.append(card);
 // });
+let carousel = document.querySelector(".carousel");
+
+fetch('../productos.json')
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        cargarProductos(productos);
+
+    })
+    .catch(error => {
+        console.error('Error al obtener el archivo JSON:', error);
+    });
 
 
 function cargarProductos(productosElegidos) {
-    
+
     carousel.innerHTML = " ";
     productosElegidos.forEach(item => {
 
@@ -175,6 +186,3 @@ scrollToLeft = () => {
 
 nextArrow.addEventListener('click', scrollToRight)
 preArrow.addEventListener('click', scrollToLeft)
-
-// el local storage esta trabajado en el carrito, tengo que corregir que el carrito no se ve hasta que se agrega un producto nuevo y el tema de las imagenes, que aparecene en una pagina y en otras no, tengo que corregir un par de errores y añadir la seccion de favoritos.
-

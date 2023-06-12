@@ -9,7 +9,18 @@ const ul = document.querySelector(".ul");
 const cartOpen = document.querySelector(".cartOpen");
 const cartClose = document.querySelector(".cartClose");
 const cartContainer = document.querySelector(".cartContainer");
+let productos;
+let total;
 
+
+fetch('../productos.json')
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+    })
+    .catch(error => {
+        console.error('Error al obtener el archivo JSON:', error);
+    });
 
 open = () => {
     ul.classList.add("visible");
@@ -47,7 +58,7 @@ function actualizarNumeritoCart() {
 actualizarNumeritoCart();
 
 while (carrito.lenght = 0) {
-    
+
 
 }
 
@@ -62,14 +73,19 @@ function agregarProductos() {
 
     cartContainer.append(carritoVacio);
 
-    
-    let vaciarCarrito = document.createElement("div");
-    vaciarCarrito.classList.add("displayNone");
-    vaciarCarrito.innerHTML = `
-    <button class=\"buttonBuy vaciarCarritoButton\">vaciar carrito</button>
+    sumarTotal();
+
+    let vaciarCarritoMasTotal = document.createElement("div");
+    vaciarCarritoMasTotal.classList.add("displayNone");
+    vaciarCarritoMasTotal.classList.add("vaciarCarritoMasTotal");
+    vaciarCarritoMasTotal.innerHTML = `
+    <button class=\"buttonBuy vaciarCarritoButton displayNone\">vaciar carrito</button>
+    <p class="total displayNone">Total: $${total}</p>
     `;
     
-    cartContainer.append(vaciarCarrito);
+    cartContainer.append(vaciarCarritoMasTotal);
+
+    let totalDiv = document.querySelector(".total");
 
     let vaciarCarritoButton = document.querySelector(".vaciarCarritoButton");
     vaciarCarritoButton.addEventListener("click", () => {
@@ -81,11 +97,23 @@ function agregarProductos() {
             timer: 1000,
             showConfirmButton: false,
         });
-    })
-    
-    if (carrito.length != 0){
+        cartContainer.classList.remove("displayFlex");
+        actualizarNumeritoCart();
+
+    });
+
+    // let numeroTotal = document.createElement("div");
+    // numeroTotal.classList.add("total");
+    // numeroTotal.innerHTML = `
+    // <p>Total: ${total}</p>
+    // `;
+
+    // cartContainer.append(numeroTotal);
+
+    if (carrito.length != 0) {
         carritoVacio.classList.add("displayNone");
-        vaciarCarrito.classList.remove("displayNone");
+        vaciarCarritoButton.classList.remove("displayNone");
+        totalDiv.classList.remove("displayNone");
     }
 
     let comprar = document.querySelector(".comprar");
@@ -104,27 +132,50 @@ function agregarProductos() {
     })
 
     carrito.forEach(item => {
+        let ubicacionActual = window.location.pathname;
 
         const cardCart = document.createElement("div");
         cardCart.classList.add("cardCart");
-        cardCart.innerHTML = `
-            <img src="../img/${item.id}.png" alt="">
-        
-            <div class="cardInfo">
-                <div class="cardText">
-                    <h4>${item.nombre}</h4>
-                    <p>$${item.precio}</p>
-                </div>
-            </div>
-            <p>Cantidad: ${item.cantidad}</p>
 
-            <div>
-            <svg class="deleteProduct" id="${item.id}" xmlns="http://www.w3.org/2000/svg" width="35" height="35"
-                viewBox="0 0 256 256">
-                <path fill="#006396"
-                    d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
-            </svg></div>
-                `;
+        if (ubicacionActual === '../index.html') {
+            cardCart.innerHTML = `
+                <img src="/img/${item.id}.png" alt="">
+            
+                <div class="cardInfo">
+                    <div class="cardText">
+                        <h4>${item.nombre}</h4>
+                        <p>$${item.precio}</p>
+                    </div>
+                </div>
+                <p>Cantidad: ${item.cantidad}</p>
+    
+                <div>
+                <svg class="deleteProduct" id="${item.id}" xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                    viewBox="0 0 256 256">
+                    <path fill="#006396"
+                        d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
+                </svg></div>
+                    `;
+        } else {
+            cardCart.innerHTML = `
+                <img src="../img/${item.id}.png" alt="">
+            
+                <div class="cardInfo">
+                    <div class="cardText">
+                        <h4>${item.nombre}</h4>
+                        <p>$${item.precio}</p>
+                    </div>
+                </div>
+                <p>Cantidad: ${item.cantidad}</p>
+    
+                <div>
+                <svg class="deleteProduct" id="${item.id}" xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                    viewBox="0 0 256 256">
+                    <path fill="#006396"
+                        d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
+                </svg></div>
+                    `;
+        }
 
         cartContainer.append(cardCart);
     });
@@ -156,15 +207,21 @@ function addToCart(e) {
     }
 
 
-
+    sumarTotal();
     actualizarNumeritoCart();
     agregarProductos();
 }
 
 function borrarProducto(e) {
     const idDelete = e.currentTarget.id;
+    const productoCantidad = carrito.find(producto => producto.id == idDelete);
     const index = carrito.findIndex(producto => producto.id == idDelete);
-    carrito.splice(index, 1);
+
+    if (productoCantidad.cantidad > 1) {
+        productoCantidad.cantidad--;
+    } else {
+        carrito.splice(index, 1);
+    }
     Swal.fire({
         title: 'El producto se eliminó',
         icon: 'success',
@@ -174,6 +231,7 @@ function borrarProducto(e) {
 
     agregarProductos();
     actualizarNumeritoCart();
+    sumarTotal();
 }
 
 function actualizarbotonDelete() {
@@ -182,6 +240,14 @@ function actualizarbotonDelete() {
     deleteProduct.forEach(boton =>
         boton.addEventListener("click", borrarProducto))
 }
+function sumarTotal() {
+    total = carrito.reduce((acc, producto) => {
+        const subtotal = producto.precio * producto.cantidad;
+        return acc + subtotal;
+    }, 0);
+}
+sumarTotal();
+
 
 function saveLocal() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
