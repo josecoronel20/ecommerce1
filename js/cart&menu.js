@@ -9,9 +9,11 @@ const ul = document.querySelector(".ul");
 const cartOpen = document.querySelector(".cartOpen");
 const cartClose = document.querySelector(".cartClose");
 const cartContainer = document.querySelector(".cartContainer");
+const preArrow = document.querySelector('.preArrow');
+const nextArrow = document.querySelector('.nextArrow');
 let productos;
 let total;
-
+let ubicacionActual = window.location.pathname;
 
 fetch('../productos.json')
     .then(response => response.json())
@@ -132,12 +134,11 @@ function agregarProductos() {
     })
 
     carrito.forEach(item => {
-        let ubicacionActual = window.location.pathname;
 
         const cardCart = document.createElement("div");
         cardCart.classList.add("cardCart");
 
-        if (ubicacionActual === '../index.html') {
+        if (ubicacionActual === '/index.html') {
             cardCart.innerHTML = `
                 <img src="/img/${item.id}.png" alt="">
             

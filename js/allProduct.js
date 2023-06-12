@@ -53,7 +53,15 @@ buttonCategoria.forEach(buton => {
             boton.classList.remove("checked");
         });
         buton.classList.add("checked");
-        const productosBoton = productos.filter(producto => producto.categoria === buton.id);
+
+        let productosBoton;
+        if (buton.id === "todos"){
+            productosBoton = productos.filter(producto => producto.categoria !== buton.id);
+        } else {
+            productosBoton = productos.filter(producto => producto.categoria === buton.id);
+        }
+
+        
         cargarProductos(productosBoton);
     });
 });
