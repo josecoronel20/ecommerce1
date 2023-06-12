@@ -102,7 +102,7 @@ header {
         }
 
         .icon {
-            @include display(flex, row, center, flex-start, 1rem);
+            @include display(flex, row, center, center, 1rem);
 
             svg {
                 transition: 0.1s;

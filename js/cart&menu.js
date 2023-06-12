@@ -11,6 +11,7 @@ const cartClose = document.querySelector(".cartClose");
 const cartContainer = document.querySelector(".cartContainer");
 const preArrow = document.querySelector('.preArrow');
 const nextArrow = document.querySelector('.nextArrow');
+let carousel = document.querySelector(".carousel");
 let productos;
 let total;
 let ubicacionActual = window.location.pathname;
@@ -140,7 +141,7 @@ function agregarProductos() {
 
         if (ubicacionActual === '/index.html') {
             cardCart.innerHTML = `
-                <img src="/img/${item.id}.png" alt="">
+                <img src="img/${item.id}.png" alt="">
             
                 <div class="cardInfo">
                     <div class="cardText">
