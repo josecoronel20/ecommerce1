@@ -9,7 +9,6 @@ const ham = document.querySelector(".open");
 const x = document.querySelector(".close");
 const ul = document.querySelector(".ul");
 const cartOpen = document.querySelector(".cartOpen");
-const cartClose = document.querySelector(".cartClose");
 const cartContainer = document.querySelector(".cartContainer");
 let ubicacionActual = window.location.pathname;
 
@@ -20,6 +19,10 @@ const open = () => {
 const close = () => {
     ul.classList.remove("visible");
 }
+
+cartOpen.addEventListener("click", () => {
+    cartContainer.classList.toggle("displayFlex");
+})
 
 ham.addEventListener("click", open);
 x.addEventListener("click", close);
@@ -36,6 +39,7 @@ fetch('../productos.json')
             numerito.innerHTML = `<p>${nuevoNumeritoCart}</p>`;
             numeritoCart.append(numerito);
         }
+        actualizarNumeritoCart();
 
         function agregarProductos() {
             cartContainer.innerHTML = "<button class=\"buttonBuy comprar\">Comprar</button>";
@@ -76,14 +80,6 @@ fetch('../productos.json')
                 actualizarNumeritoCart();
         
             });
-        
-            // let numeroTotal = document.createElement("div");
-            // numeroTotal.classList.add("total");
-            // numeroTotal.innerHTML = `
-            // <p>Total: ${total}</p>
-            // `;
-        
-            // cartContainer.append(numeroTotal);
         
             if (carrito.length != 0) {
                 carritoVacio.classList.add("displayNone");
@@ -159,6 +155,8 @@ fetch('../productos.json')
             actualizarbotonDelete();
             saveLocal();
         }
+
+        agregarProductos();
 
         function addToCart(e) {
             let idButton = e.target.id;

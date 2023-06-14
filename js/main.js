@@ -6,7 +6,6 @@ const ham = document.querySelector(".open");
 const x = document.querySelector(".close");
 const ul = document.querySelector(".ul");
 const cartOpen = document.querySelector(".cartOpen");
-const cartClose = document.querySelector(".cartClose");
 const cartContainer = document.querySelector(".cartContainer");
 let ubicacionActual = window.location.pathname;
 let carousel = document.querySelector(".carousel");
@@ -35,6 +34,10 @@ let scrollToLeft = () => {
 nextArrow.addEventListener('click', scrollToRight);
 preArrow.addEventListener('click', scrollToLeft);
 
+cartOpen.addEventListener("click", () => {
+    cartContainer.classList.toggle("displayFlex");
+})
+
 fetch('productos.json')
     .then(response => response.json())
     .then(productos => {
@@ -47,6 +50,7 @@ fetch('productos.json')
             numerito.innerHTML = `<p>${nuevoNumeritoCart}</p>`;
             numeritoCart.append(numerito);
         }
+        actualizarNumeritoCart();
 
         function agregarProductos() {
             cartContainer.innerHTML = "<button class=\"buttonBuy comprar\">Comprar</button>";
@@ -87,14 +91,6 @@ fetch('productos.json')
                 actualizarNumeritoCart();
         
             });
-        
-            // let numeroTotal = document.createElement("div");
-            // numeroTotal.classList.add("total");
-            // numeroTotal.innerHTML = `
-            // <p>Total: ${total}</p>
-            // `;
-        
-            // cartContainer.append(numeroTotal);
         
             if (carrito.length != 0) {
                 carritoVacio.classList.add("displayNone");
@@ -165,11 +161,11 @@ fetch('productos.json')
                 cartContainer.append(cardCart);
             });
         
-        
-        
             actualizarbotonDelete();
             saveLocal();
         }
+
+        agregarProductos();
 
         function addToCart(e) {
             let idButton = e.target.id;
