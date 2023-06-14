@@ -16,7 +16,7 @@ let productos;
 let total;
 let ubicacionActual = window.location.pathname;
 
-fetch('../json/productos.json')
+fetch('../productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data;
@@ -25,7 +25,7 @@ fetch('../json/productos.json')
         console.error('Error al obtener el archivo JSON:', error);
     });
 
-open = () => {
+    open = () => {
     ul.classList.add("visible");
 }
 
